@@ -3,12 +3,34 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "react-toastify/dist/ReactToastify.css"; // eslint-disable-line
+
+import Cards from "./components/Cards";
+import Register from "./components/Register";
+import Login from "./components/Login";
+
 import App from "./App";
+
+import "./sass/index.scss";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Cards />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
   },
 ]);
 
