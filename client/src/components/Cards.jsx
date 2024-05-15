@@ -13,7 +13,7 @@ function Cards() {
         navigate("/login");
       } else {
         const { data } = await axios.post(
-          "http://localhost:4000",
+          `${import.meta.env.VITE_API_URL}/api/users/`,
           {},
           {
             withCredentials: true,
@@ -28,6 +28,7 @@ function Cards() {
           });
       }
     };
+
     verifyUser();
   }, [cookies, navigate, removeCookie]);
 
@@ -35,6 +36,7 @@ function Cards() {
     removeCookie("jwt");
     navigate("/login");
   };
+
   return (
     <>
       <div className="private">

@@ -22,7 +22,7 @@ function Login() {
     event.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/login",
+        `${import.meta.env.VITE_API_URL}/api/users/login`,
         {
           ...values,
         },
@@ -38,7 +38,7 @@ function Login() {
         }
       }
     } catch (ex) {
-      console.info(ex);
+      console.error(ex);
     }
   };
   return (

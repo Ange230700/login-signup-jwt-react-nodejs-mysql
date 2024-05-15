@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Register() {
   const [cookies] = useCookies(["cookie-name"]);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (cookies.jwt) {
       navigate("/");
@@ -14,20 +15,24 @@ function Register() {
   }, [cookies, navigate]);
 
   const [values, setValues] = useState({ email: "", password: "" });
+
   const generateError = (error) =>
     toast.error(error, {
       position: "bottom-right",
     });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/register",
+        `${import.meta.env.VITE_API_URL}/api/users/signup`,
         {
           ...values,
         },
         { withCredentials: true }
       );
+
       if (data) {
         if (data.errors) {
           const { email, password } = data.errors;
@@ -38,9 +43,10 @@ function Register() {
         }
       }
     } catch (ex) {
-      console.info(ex);
+      console.error(ex);
     }
   };
+
   return (
     <div className="container">
       <h2>Register Account</h2>
