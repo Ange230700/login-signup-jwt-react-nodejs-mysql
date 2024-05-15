@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import "react-toastify/dist/ReactToastify.css"; // eslint-disable-line
-
 import Cards from "./components/Cards";
 import Register from "./components/Register";
 import Login from "./components/Login";

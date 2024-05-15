@@ -77,7 +77,7 @@ const signup = async (req, res, next) => {
   } catch (err) {
     console.error(err);
     const errors = handleErrors(err);
-    res.status(400).json({
+    res.json({
       errors,
       created: false,
     });
@@ -110,7 +110,8 @@ const login = async (req, res, next) => {
     res.status(200).json({ user: user.id, status: true });
   } catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json({ errors, status: false });
+    res.json({ errors, status: false });
+
     // Pass any errors to the error-handling middleware
     next(err);
   }

@@ -8,9 +8,9 @@ const createToken = (id) =>
   jwt.sign({ id }, "super secret key", { expiresIn: maxAge });
 
 const handleErrors = (err) => {
-  console.error(err.message, err.code);
   const errors = { email: "", password: "" };
-
+  
+  console.error(err.message, err.code);
   // Incorrect email
   if (err.message === "incorrect email") {
     errors.email = "That email is not registered";
@@ -63,6 +63,7 @@ const checkUser = (req, res, next) => {
 };
 
 module.exports = {
+  maxAge,
   checkUser,
   createToken,
   handleErrors,

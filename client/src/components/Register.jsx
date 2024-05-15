@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import toast from "react-hot-toast"; // eslint-disable-line
 import { useCookies } from "react-cookie"; // eslint-disable-line
 import { Link, useNavigate } from "react-router-dom";
 
@@ -17,9 +17,7 @@ function Register() {
   const [values, setValues] = useState({ email: "", password: "" });
 
   const generateError = (error) =>
-    toast.error(error, {
-      position: "bottom-right",
-    });
+    toast.error(error);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -78,7 +76,6 @@ function Register() {
           Already have an account ?<Link to="/login"> Login</Link>
         </span>
       </form>
-      <ToastContainer />
     </div>
   );
 }

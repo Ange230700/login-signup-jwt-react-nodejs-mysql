@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie"; // eslint-disable-line
-import { ToastContainer, toast } from "react-toastify";
+import toast from "react-hot-toast"; // eslint-disable-line
 
 function Login() {
   const [cookies] = useCookies([]);
@@ -15,9 +15,8 @@ function Login() {
 
   const [values, setValues] = useState({ email: "", password: "" });
   const generateError = (error) =>
-    toast.error(error, {
-      position: "bottom-right",
-    });
+    toast.error(error);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -72,7 +71,6 @@ function Login() {
           Don't have an account ?<Link to="/register"> Register </Link>
         </span>
       </form>
-      <ToastContainer />
     </div>
   );
 }
